@@ -11,6 +11,7 @@
 
     <modules>
         <module>cloud-server</module>
+        <module>lesson-2-spring-mvc</module>
     </modules>
 
     <build>
