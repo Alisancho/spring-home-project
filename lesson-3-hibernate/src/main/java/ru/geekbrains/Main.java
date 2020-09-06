@@ -4,6 +4,8 @@ import org.hibernate.cfg.Configuration;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -60,5 +62,16 @@ public class Main {
         em.getTransaction().begin();
         em.persist(contact);
         em.getTransaction().commit();
+
+        Scanner in = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        Integer num = in.nextInt();
+
+
+        List<UserProduct> authors = em.createQuery("SELECT a FROM UserProduct a WHERE a.user_id = :num", UserProduct.class).getResultList();
+
+        authors.forEach(System.out::println);
+
+
     }
 }
