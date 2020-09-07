@@ -12,6 +12,9 @@ public class UserProduct {
 
     @Id
     @Column
+    private String session_id;
+    @Id
+    @Column
     private Integer user_id;
     @Id
     @Column
@@ -24,6 +27,14 @@ public class UserProduct {
     private String status;
 
     public UserProduct() {
+    }
+
+    public String getSession_id() {
+        return session_id;
+    }
+
+    public void setSession_id(String session_id) {
+        this.session_id = session_id;
     }
 
     public Integer getUser_id() {
