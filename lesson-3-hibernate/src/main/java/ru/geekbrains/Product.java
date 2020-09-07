@@ -11,16 +11,12 @@ import java.math.BigDecimal;
 public class Product {
 
     @Id
-    @Column(name = "product_id")
     private Integer product_id;
-
-    @Column(name = "product_name")
+    @Column
     private String product_name;
-
-    @Column(name = "product_price")
+    @Column
     private BigDecimal product_price;
-
-    @Column(name = "product_status")
+    @Column
     private String product_status;
 
     public Product() {

@@ -1,9 +1,6 @@
 package ru.geekbrains;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -13,12 +10,11 @@ public class UserProduct {
     @Id
     @Column
     private String session_id;
-    @Id
-    @Column
-    private Integer user_id;
-    @Id
-    @Column
-    private Integer product_id;
+
+    @ManyToOne
+    private User user_id;
+    @ManyToOne
+    private Product product_id;
     @Column
     private BigDecimal price;
     @Column
@@ -37,14 +33,6 @@ public class UserProduct {
         this.session_id = session_id;
     }
 
-    public Integer getUser_id() {
-        return user_id;
-    }
-
-    public Integer getProduct_id() {
-        return product_id;
-    }
-
     public BigDecimal getPrice() {
         return price;
     }
@@ -55,14 +43,6 @@ public class UserProduct {
 
     public String getStatus() {
         return status;
-    }
-
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
-    }
-
-    public void setProduct_id(Integer product_id) {
-        this.product_id = product_id;
     }
 
     public void setPrice(BigDecimal price) {
@@ -76,6 +56,23 @@ public class UserProduct {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public User getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(User user_id) {
+        this.user_id = user_id;
+    }
+
+    public Product getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(Product product_id) {
+        this.product_id = product_id;
+    }
+
     @Override
     public String toString() {
         return "UserProduct{" +
