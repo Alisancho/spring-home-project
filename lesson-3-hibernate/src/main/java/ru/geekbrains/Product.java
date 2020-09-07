@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "product")
@@ -17,7 +18,7 @@ public class Product {
     private String product_name;
 
     @Column(name = "product_price")
-    private String product_price;
+    private BigDecimal product_price;
 
     @Column(name = "product_status")
     private String product_status;
@@ -41,11 +42,11 @@ public class Product {
         this.product_name = product_name;
     }
 
-    public String getProduct_price() {
+    public BigDecimal getProduct_price() {
         return product_price;
     }
 
-    public void setProduct_price(String product_price) {
+    public void setProduct_price(BigDecimal product_price) {
         this.product_price = product_price;
     }
 

@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "user_product")
@@ -16,7 +17,7 @@ public class UserProduct {
     @Column
     private Integer product_id;
     @Column
-    private String price;
+    private BigDecimal price;
     @Column
     private Integer count;
     @Column
@@ -33,7 +34,7 @@ public class UserProduct {
         return product_id;
     }
 
-    public String getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
@@ -53,7 +54,7 @@ public class UserProduct {
         this.product_id = product_id;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
