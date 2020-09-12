@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.persist.entity.User;
-import ru.geekbrains.persist.repo.UserRepository;
+import ru.geekbrains.repo.UserRepository;
 
 import javax.validation.Valid;
 import java.util.List;

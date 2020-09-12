@@ -16,7 +16,7 @@ import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:application.properties")
-@EnableJpaRepositories("ru.geekbrains.persist.repo")
+@EnableJpaRepositories("ru.geekbrains.repo")
 public class PersistConfig {
 
     @Value("${database.driver.class}")
