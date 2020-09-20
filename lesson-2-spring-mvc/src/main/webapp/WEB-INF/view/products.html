@@ -38,6 +38,19 @@
             <a class="btn btn-primary" href="product.html">Add Product</a>
         </div>
 
+        <div class="col-12 mt-3">
+            <form>
+                <label>Min cost</label>
+                <input type="text" name="min" id="min" th:value="${param.min}"/>
+                <button class="btn btn-primary" type="submit">Filter</button>
+            </form>
+            <form>
+                <label>Max cost</label>
+                <input type="text" name="max" id="max" th:value="${param.max}"/>
+                <button class="btn btn-primary" type="submit">Filter</button>
+            </form>
+        </div>
+
         <div class="col-12">
             <table class="table table-bordered my-2">
                 <thead>

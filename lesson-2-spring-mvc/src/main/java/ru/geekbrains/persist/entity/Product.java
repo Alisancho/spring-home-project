@@ -1,25 +1,28 @@
 package ru.geekbrains.persist.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.math.BigDecimal;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "product")
 public class Product {
-    private final String id;
-    private final String title;
-    private final String cost;
 
-    public Product(final String id, final String title, final String cost) {
-        this.id = id;
-        this.title = title;
-        this.cost = cost;
-    }
+    @Id
+    private String id;
 
-    public String getId() {
-        return id;
-    }
+    @Column
+    private String title;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getCost() {
-        return cost;
-    }
+    @Column
+    private BigDecimal cost;
 }
