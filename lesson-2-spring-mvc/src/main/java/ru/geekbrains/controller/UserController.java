@@ -2,15 +2,19 @@ package ru.geekbrains.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.persist.entity.User;
 import ru.geekbrains.repo.UserRepository;
+import ru.geekbrains.repo.UserSpecification;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -20,16 +24,25 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping
-    public String allUsers(Model model, @RequestParam(value = "name", required = false) String name) {
+    public String allUsers(Model model,
+                           @RequestParam(value = "name", required = false) String name,
+                           @RequestParam(value = "email", required = false) String email,
+                           @RequestParam(value = "page") Optional<Integer> page,
+                           @RequestParam(value = "size") Optional<Integer> size) {
         log.info("Filtering by name: {}", name);
 
-        List<User> allUsers;
-        if (name == null || name.isEmpty()) {
-            allUsers = userRepository.findAll();
-        } else {
-            allUsers = userRepository.findByLoginLike("%" + name + "%");
+        PageRequest pageRequest = PageRequest.of(page.orElse(1) - 1, size.orElse(5));
+
+        Specification<User> spec = UserSpecification.trueLiteral();
+
+        if (name != null && !name.isEmpty()) {
+            spec = spec.and(UserSpecification.loginLike(name));
         }
-        model.addAttribute("users", allUsers);
+        if (email != null && !email.isEmpty()) {
+            spec = spec.and(UserSpecification.emailLike((email)));
+        }
+        
+        model.addAttribute("users", userRepository.findAll(spec, pageRequest));
         return "users";
     }
 
