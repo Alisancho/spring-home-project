@@ -3,7 +3,7 @@ package ru.geekbrains.repo;
 import org.springframework.data.jpa.domain.Specification;
 import ru.geekbrains.persist.entity.User;
 
-public class UserSpecification {
+public final class UserSpecification {
     public static Specification<User> trueLiteral() {
         return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.isTrue(criteriaBuilder.literal(true));
     }

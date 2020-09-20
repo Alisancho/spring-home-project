@@ -13,7 +13,6 @@ import ru.geekbrains.repo.UserRepository;
 import ru.geekbrains.repo.UserSpecification;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -41,7 +40,7 @@ public class UserController {
         if (email != null && !email.isEmpty()) {
             spec = spec.and(UserSpecification.emailLike((email)));
         }
-        
+
         model.addAttribute("users", userRepository.findAll(spec, pageRequest));
         return "users";
     }
